@@ -12,12 +12,8 @@
     "noEmit": true,
     "strict": true,
     "target": "esnext",
-    "baseUrl": "./",
-    "paths": {
-      "*": [
-        "src/*"
-      ]
-    }
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
   "exclude": [
     "node_modules",

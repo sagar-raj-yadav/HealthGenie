@@ -9,7 +9,7 @@
     "splash": {
       "image": "./generated-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#4a6da7"
+      "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,8 +20,9 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./generated-icon.png",
-        "backgroundColor": "#4a6da7"
-      }
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.healthtracker"
     },
     "web": {
       "favicon": "./generated-icon.png"

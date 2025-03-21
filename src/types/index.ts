@@ -1,44 +1,70 @@
+// Basic health data types
 export interface WaterIntake {
-  current: number;
-  goal: number;
+  id: string;
+  amount: number; // in ml
+  timestamp: string;
   date: string;
 }
 
-export interface StepEntry {
+export interface StepCount {
   id: string;
   count: number;
   date: string;
+  timestamp: string;
 }
 
-export interface WeightEntry {
+export interface Weight {
   id: string;
-  weight: number;
+  value: number; // in kg
   date: string;
+  timestamp: string;
+  note?: string;
 }
 
-export interface BloodPressureEntry {
+export interface BloodPressure {
   id: string;
   systolic: number;
   diastolic: number;
   date: string;
+  timestamp: string;
+  note?: string;
 }
 
-export interface HeartRateEntry {
+export interface HeartRate {
   id: string;
-  rate: number;
+  bpm: number;
   date: string;
+  timestamp: string;
+  note?: string;
 }
 
 export interface Habit {
   id: string;
   name: string;
-  created: string;
-  completedDates: string[];
+  description?: string;
+  frequency: string[]; // days of week or specific days
+  createdAt: string;
+  completedDates: string[]; // dates when the habit was completed
+  color?: string; // for categorization/display
 }
 
-export interface ChartData {
-  labels: string[];
-  datasets: {
-    data: number[];
-  }[];
+// Aggregate type
+export interface HealthData {
+  waterIntake: WaterIntake[];
+  stepCounts: StepCount[];
+  weights: Weight[];
+  bloodPressures: BloodPressure[];
+  heartRates: HeartRate[];
+  habits: Habit[];
 }
+
+// Navigation types
+export type RootStackParamList = {
+  Home: undefined;
+  WaterIntake: undefined;
+  StepCount: undefined;
+  Weight: undefined;
+  BloodPressure: undefined;
+  HeartRate: undefined;
+  HabitTracking: undefined;
+};
