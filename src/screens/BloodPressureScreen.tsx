@@ -103,29 +103,7 @@ const BloodPressureScreen: React.FC = () => {
         </View>
       )}
 
-      <View style={styles.chartContainer}>
-        <Text style={styles.chartTitle}>Healthy Ranges</Text>
-        <View style={styles.rangeItem}>
-          <View style={[styles.rangeColor, {backgroundColor: colors.success}]} />
-          <Text style={styles.rangeText}>Normal: &lt;120/80 mmHg</Text>
-        </View>
-        <View style={styles.rangeItem}>
-          <View style={[styles.rangeColor, {backgroundColor: colors.warning}]} />
-          <Text style={styles.rangeText}>Elevated: 120-129/&lt;80 mmHg</Text>
-        </View>
-        <View style={styles.rangeItem}>
-          <View style={[styles.rangeColor, {backgroundColor: colors.warning}]} />
-          <Text style={styles.rangeText}>High (Stage 1): 130-139/80-89 mmHg</Text>
-        </View>
-        <View style={styles.rangeItem}>
-          <View style={[styles.rangeColor, {backgroundColor: colors.error}]} />
-          <Text style={styles.rangeText}>High (Stage 2): &gt;=140/&gt;=90 mmHg</Text>
-        </View>
-        <View style={styles.rangeItem}>
-          <View style={[styles.rangeColor, {backgroundColor: colors.error}]} />
-          <Text style={styles.rangeText}>Crisis: &gt;180/&gt;120 mmHg</Text>
-        </View>
-      </View>
+      
 
       <View style={styles.inputContainer}>
         <View style={styles.bpInputRow}>
@@ -167,6 +145,31 @@ const BloodPressureScreen: React.FC = () => {
           onPress={handleAddBloodPressure}>
           <Text style={styles.addButtonText}>Add Blood Pressure Reading</Text>
         </TouchableOpacity>
+      </View>
+
+
+      <View style={styles.chartContainer}>
+        <Text style={styles.chartTitle}>Healthy Ranges</Text>
+        <View style={styles.rangeItem}>
+          <View style={[styles.rangeColor, {backgroundColor: colors.success}]} />
+          <Text style={styles.rangeText}>Normal: &lt;120/80 mmHg</Text>
+        </View>
+        <View style={styles.rangeItem}>
+          <View style={[styles.rangeColor, {backgroundColor: colors.warning}]} />
+          <Text style={styles.rangeText}>Elevated: 120-129/&lt;80 mmHg</Text>
+        </View>
+        <View style={styles.rangeItem}>
+          <View style={[styles.rangeColor, {backgroundColor: colors.warning}]} />
+          <Text style={styles.rangeText}>High (Stage 1): 130-139/80-89 mmHg</Text>
+        </View>
+        <View style={styles.rangeItem}>
+          <View style={[styles.rangeColor, {backgroundColor: colors.error}]} />
+          <Text style={styles.rangeText}>High (Stage 2): &gt;=140/&gt;=90 mmHg</Text>
+        </View>
+        <View style={styles.rangeItem}>
+          <View style={[styles.rangeColor, {backgroundColor: colors.error}]} />
+          <Text style={styles.rangeText}>Crisis: &gt;180/&gt;120 mmHg</Text>
+        </View>
       </View>
 
       <View style={styles.historyContainer}>
@@ -213,7 +216,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.primary,
     textAlign: 'center',
-    marginBottom: 20,
+    marginVertical: 20,
+
   },
   latestContainer: {
     backgroundColor: colors.cardBackground,

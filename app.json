@@ -25,7 +25,15 @@
       "package": "com.healthtracker"
     },
     "web": {
-      "favicon": "./generated-icon.png"
-    }
+      "favicon": "./generated-icon.png",
+      "build": {
+        "babel": {
+          "plugins": ["react-native-web"]
+        }
+      }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }

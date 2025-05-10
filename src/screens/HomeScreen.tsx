@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  Image,
   ActivityIndicator,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -98,7 +99,7 @@ const HomeScreen: React.FC = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>Health Tracker</Text>
+      <Text style={styles.title}>Health Genie</Text>
       <Text style={styles.date}>{formatDateForDisplay(today)}</Text>
       
       <View style={styles.grid}>
@@ -160,20 +161,76 @@ const HomeScreen: React.FC = () => {
           </View>
         </TouchableOpacity>
       </View>
+
+      <TouchableOpacity
+      style={styles.card1}
+      onPress={() => navigation.navigate('aiscreen')}
+      activeOpacity={0.9}
+    >
+      <Image
+        source={require('../utils/robot1.png')}
+        style={styles.image1}
+        resizeMode="cover"
+      />
+
+      <View style={styles.overlay1} />
+
+      <View style={styles.content1}>
+        <Text style={styles.title1}>Connect with AI</Text>
+        <Text style={styles.subtitle1}>
+          Your smart assistant is just one tap away!
+        </Text>
+      </View>
+    </TouchableOpacity>
       
-      <View style={styles.tipsContainer}>
+      {/* <View style={styles.tipsContainer}>
         <Text style={styles.tipsTitle}>Health Tips</Text>
         <Text style={styles.tip}>• Drink at least 8 glasses of water daily</Text>
         <Text style={styles.tip}>• Aim for 10,000 steps every day</Text>
         <Text style={styles.tip}>• Regular heart rate monitoring helps track fitness</Text>
         <Text style={styles.tip}>• Monitor blood pressure weekly for heart health</Text>
         <Text style={styles.tip}>• Consistency in habits leads to better health outcomes</Text>
-      </View>
+      </View> */}
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  card1: {
+    width: '95%',
+    height: 200,
+    borderRadius: 20,
+    overflow: 'hidden',
+    alignSelf: 'center',
+    marginVertical: 10,
+    backgroundColor: 'rgb(181, 250, 251)',
+    elevation: 6,
+  },
+  image1: {
+    ...StyleSheet.absoluteFillObject,
+    width: '100%',
+    height: '100%',
+  },
+  overlay1: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+  },
+  content1: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    padding: 20,
+  },
+  title1: {
+    color: '#ffffff',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 4,
+  },
+  subtitle1: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight:"bold"
+  },
   container: {
     flex: 1,
     padding: 16,
@@ -195,7 +252,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.primary,
     textAlign: 'center',
-    marginBottom: 8,
+    marginVertical:12
   },
   date: {
     fontSize: 16,
@@ -212,7 +269,7 @@ const styles = StyleSheet.create({
     width: '48%',
     backgroundColor: colors.cardBackground,
     borderRadius: 12,
-    padding: 16,
+    padding: 18,
     marginBottom: 16,
     elevation: 2,
   },

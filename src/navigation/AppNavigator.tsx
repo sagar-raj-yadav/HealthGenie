@@ -11,6 +11,8 @@ import HeartRateScreen from '../screens/HeartRateScreen';
 import HabitTrackingScreen from '../screens/HabitTrackingScreen';
 import colors from '../styles/colors';
 import {View, Text, StyleSheet} from 'react-native';
+import AIScreen from '../screens/AIScreen';
+import AICHAT from '../screens/AIchat';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
@@ -68,6 +70,20 @@ const TabIcon: React.FC<{name: string; focused: boolean}> = ({name, focused}) =>
             </View>
           </View>
         );
+        case 'aiscreen':
+          return (
+            <View style={styles.iconCircle}>
+              <View style={styles.aiBrainIcon} />
+            </View>
+          );
+        
+          case 'aichat':
+            return (
+              <View style={styles.iconCircle}>
+                <View style={styles.chatBubbleIcon} />
+              </View>
+            );
+          
       default:
         return <View style={styles.iconCircle} />;
     }
@@ -76,23 +92,6 @@ const TabIcon: React.FC<{name: string; focused: boolean}> = ({name, focused}) =>
   return (
     <View style={styles.tabIcon}>
       {getIconContent()}
-      <Text
-        style={[
-          styles.tabLabel,
-          {color: focused ? colors.primary : colors.textSecondary},
-        ]}>
-        {name === 'WaterIntake'
-          ? 'Water'
-          : name === 'StepCount'
-          ? 'Steps'
-          : name === 'BloodPressure'
-          ? 'BP'
-          : name === 'HeartRate'
-          ? 'Heart'
-          : name === 'HabitTracking'
-          ? 'Habits'
-          : name}
-      </Text>
     </View>
   );
 };
@@ -100,70 +99,71 @@ const TabIcon: React.FC<{name: string; focused: boolean}> = ({name, focused}) =>
 const AppNavigator: React.FC = () => {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused}) => (
-          <TabIcon name={route.name} focused={focused} />
-        ),
-        tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textSecondary,
-        tabBarStyle: {
-          height: 60,
-          paddingBottom: 5,
-          paddingTop: 5,
-          backgroundColor: colors.cardBackground,
-          borderTopColor: colors.border,
-        },
-        tabBarLabelStyle: {
-          fontSize: 10,
-        },
-        headerStyle: {
-          backgroundColor: colors.cardBackground,
-          elevation: 0,
-          shadowOpacity: 0,
-          borderBottomWidth: 1,
-          borderBottomColor: colors.border,
-        },
-        headerTintColor: colors.primary,
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-        headerTitleAlign: 'center',
-      })}>
-      <Tab.Screen 
-        name="Home" 
-        component={HomeScreen} 
-        options={{title: 'Health Tracker'}}
-      />
+  screenOptions={({ route }) => ({
+    tabBarIcon: ({ focused }) => <TabIcon name={route.name} focused={focused} />,
+    tabBarActiveTintColor: colors.primary,
+    tabBarInactiveTintColor: colors.textSecondary,
+    tabBarStyle: {
+      height: 60,
+      paddingBottom: 5,
+      paddingTop: 5,
+      backgroundColor: colors.cardBackground,
+      borderTopColor: colors.border,
+    },
+    tabBarLabelStyle: {
+      fontSize: 10,
+    },
+    headerShown: false, // Hide the header for all screens
+  })}
+>
+
+<Tab.Screen 
+  name="Home" 
+  component={HomeScreen} 
+  options={{  headerShown: false }} 
+/>
+
       <Tab.Screen 
         name="WaterIntake" 
         component={WaterIntakeScreen} 
-        options={{title: 'Water Intake'}}
+        options={{headerShown: false}}
       />
       <Tab.Screen 
         name="StepCount" 
         component={StepCountScreen} 
-        options={{title: 'Step Counter'}}
+        options={{ headerShown: false}}
       />
       <Tab.Screen 
         name="Weight" 
         component={WeightScreen} 
-        options={{title: 'Weight Tracker'}}
+        options={{headerShown: false}}
       />
       <Tab.Screen 
         name="BloodPressure" 
         component={BloodPressureScreen} 
-        options={{title: 'Blood Pressure'}}
+        options={{headerShown: false}}
       />
       <Tab.Screen 
         name="HeartRate" 
         component={HeartRateScreen} 
-        options={{title: 'Heart Rate'}}
+        options={{ headerShown: false}}
       />
       <Tab.Screen 
         name="HabitTracking" 
         component={HabitTrackingScreen} 
-        options={{title: 'Habit Tracker'}}
+        options={{ headerShown: false}}
       />
+      <Tab.Screen 
+        name="aiscreen" 
+        component={AIScreen} 
+        options={{ headerShown: false}}
+      />
+      <Tab.Screen 
+        name="aichat" 
+        component={AICHAT} 
+        options={{ headerShown: false}}
+      />
+      
     </Tab.Navigator>
   );
 };
@@ -184,6 +184,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
+  },
+  chatBubbleIcon: {
+    width: 14,
+    height: 10,
+    backgroundColor: colors.primary,
+    borderRadius: 4,
+    position: 'relative',
+  },
+  aiBrainIcon: {
+    width: 14,
+    height: 14,
+    borderRadius: 7,
+    backgroundColor: colors.primary,
+    borderWidth: 2,
+    borderColor: colors.cardBackground,
+  },
+  chatBubbleTail: {
+    position: 'absolute',
+    bottom: -3,
+    left: 5,
+    width: 6,
+    height: 6,
+    backgroundColor: colors.primary,
+    transform: [{ rotate: '45deg' }],
   },
   // Home icon
   homeIcon: {

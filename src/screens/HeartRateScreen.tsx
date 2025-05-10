@@ -159,26 +159,7 @@ const HeartRateScreen: React.FC = () => {
         </View>
       )}
 
-      <View style={styles.rangesContainer}>
-        <Text style={styles.rangesTitle}>Heart Rate Ranges</Text>
-        <View style={styles.rangeItem}>
-          <View style={[styles.rangeColor, {backgroundColor: colors.secondary}]} />
-          <Text style={styles.rangeText}>Resting: &lt;60 BPM</Text>
-        </View>
-        <View style={styles.rangeItem}>
-          <View style={[styles.rangeColor, {backgroundColor: colors.success}]} />
-          <Text style={styles.rangeText}>Normal: 60-100 BPM</Text>
-        </View>
-        <View style={styles.rangeItem}>
-          <View style={[styles.rangeColor, {backgroundColor: colors.warning}]} />
-          <Text style={styles.rangeText}>Elevated: 101-140 BPM</Text>
-        </View>
-        <View style={styles.rangeItem}>
-          <View style={[styles.rangeColor, {backgroundColor: colors.error}]} />
-          <Text style={styles.rangeText}>High: &gt;140 BPM</Text>
-        </View>
-      </View>
-
+     
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Heart Rate (BPM):</Text>
         <TextInput
@@ -205,6 +186,27 @@ const HeartRateScreen: React.FC = () => {
           <Text style={styles.addButtonText}>Add Heart Rate Reading</Text>
         </TouchableOpacity>
       </View>
+
+      <View style={styles.rangesContainer}>
+        <Text style={styles.rangesTitle}>Heart Rate Ranges</Text>
+        <View style={styles.rangeItem}>
+          <View style={[styles.rangeColor, {backgroundColor: colors.secondary}]} />
+          <Text style={styles.rangeText}>Resting: &lt;60 BPM</Text>
+        </View>
+        <View style={styles.rangeItem}>
+          <View style={[styles.rangeColor, {backgroundColor: colors.success}]} />
+          <Text style={styles.rangeText}>Normal: 60-100 BPM</Text>
+        </View>
+        <View style={styles.rangeItem}>
+          <View style={[styles.rangeColor, {backgroundColor: colors.warning}]} />
+          <Text style={styles.rangeText}>Elevated: 101-140 BPM</Text>
+        </View>
+        <View style={styles.rangeItem}>
+          <View style={[styles.rangeColor, {backgroundColor: colors.error}]} />
+          <Text style={styles.rangeText}>High: &gt;140 BPM</Text>
+        </View>
+      </View>
+
 
       <View style={styles.historyContainer}>
         <Text style={styles.historyTitle}>History</Text>
@@ -252,7 +254,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.primary,
     textAlign: 'center',
-    marginBottom: 20,
+    marginVertical: 20,
+
   },
   latestContainer: {
     backgroundColor: colors.cardBackground,

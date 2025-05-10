@@ -1,6 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import colors from '../styles/colors';
+import { Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 interface WaterIntakeTrackerProps {
   progress: number; // 0 to 1
@@ -20,6 +23,7 @@ const WaterIntakeTracker: React.FC<WaterIntakeTrackerProps> = ({
 
   return (
     <View style={styles.container}>
+
       <View style={styles.waterBottle}>
         <View style={styles.bottleOutline}>
           <View style={[styles.water, {height: waveHeight}]} />
@@ -55,8 +59,8 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   waterBottle: {
-    width: 120,
-    height: 220,
+    width: width*0.5,
+    height: height*0.25,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 24,
@@ -64,9 +68,9 @@ const styles = StyleSheet.create({
   bottleOutline: {
     width: '100%',
     height: '100%',
-    borderWidth: 4,
+    borderWidth: 6,
     borderColor: colors.secondary,
-    borderRadius: 20,
+    borderRadius: "50%",
     overflow: 'hidden',
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     position: 'relative',
@@ -103,9 +107,10 @@ const styles = StyleSheet.create({
     color: colors.primary,
   },
   amountText: {
-    fontSize: 12,
-    color: colors.textSecondary,
+    fontSize: 15,
+    color: "white",
     marginTop: 5,
+    fontWeight:"bold"
   },
   infoContainer: {
     flexDirection: 'row',
@@ -123,7 +128,7 @@ const styles = StyleSheet.create({
   },
   infoLabel: {
     fontSize: 12,
-    color: colors.textSecondary,
+    color: "white",
     marginTop: 4,
   },
 });

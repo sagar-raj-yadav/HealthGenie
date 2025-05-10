@@ -353,7 +353,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.primary,
     textAlign: 'center',
-    marginBottom: 20,
+    marginVertical: 20,
+
   },
   weekContainer: {
     flexDirection: 'row',
