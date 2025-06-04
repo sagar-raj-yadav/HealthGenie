@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import colors from '../styles/colors';
-
 interface ChartDataPoint {
   date: string;
   value: number;
